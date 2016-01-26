@@ -1015,6 +1015,8 @@ int main(int argc, char* argv[])
 
 	CHECK_SP_ERR( sp_session_create( &g_spotify_session_config, &g_session ) );
 
+	CHECK_SP_ERR( sp_session_set_volume_normalization( g_session, FALSE ) );
+
 	CHECK_SP_ERR( sp_session_preferred_bitrate( g_session, SP_BITRATE_320k ) );
 
 	CHECK_SP_ERR( sp_session_login( g_session, g_options.spotifyUsername.c_str(), g_options.spotifyPassword.c_str(), false, NULL ) );
