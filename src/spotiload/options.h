@@ -16,7 +16,7 @@ public:
 		eDownloadLink,
 		eAppKey,
 		eCacheDir,
-
+		eVolumeNormalization,
 		eCOUNT
 	};
 
@@ -31,6 +31,8 @@ public:
 
 	std::string					appkeyFilename;
 	std::string					cacheDir;
+
+	bool						volumeNormalization;
 
 	Options();
 

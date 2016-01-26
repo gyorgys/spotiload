@@ -35,6 +35,8 @@ static std::string							g_cacheLocation;
 static std::string							g_settingsLocation;
 static std::string							g_traceFile;
 
+static INT16								g_trackMaxVolume = 0;
+
 enum EState
 {
 	eWaitForTrackLoad,
@@ -125,6 +127,14 @@ int onSpotifyMusicDelivery(sp_session *session, const sp_audioformat *format, co
 		return num_frames;
 	}
 
+	INT16* pSamples = (INT16*)frames;
+	for (int i = 0; i < numSamples; i++)
+	{
+		if (pSamples[i] > g_trackMaxVolume) g_trackMaxVolume = pSamples[i];
+	}
+
+	double volPercent = 100.0 * g_trackMaxVolume / INT16_MAX;
+
 	m_writer->appendData( (short*)frames, numSamples );
 
 	g_numSamplesCurrentTrack += numSamples;
@@ -142,7 +152,7 @@ int onSpotifyMusicDelivery(sp_session *session, const sp_audioformat *format, co
 		size_t minutesTotal	= durationSecs / 60;
 		size_t secsTotal	= durationSecs - minutesTotal * 60;
 
-		printf( "%02u:%02u / %02u:%02u\r", (unsigned int)minutes, (unsigned int)secs, (unsigned int)minutesTotal, (unsigned int)secsTotal );
+		printf("%02u:%02u / %02u:%02u  Max. Vol.: %03f\r", (unsigned int)minutes, (unsigned int)secs, (unsigned int)minutesTotal, (unsigned int)secsTotal, volPercent);
 	}
 
 	return num_frames;
@@ -174,6 +184,7 @@ void onSpotifyLogMessage(sp_session *session, const char* _msg)
 
 void onSpotifyEndOfTrack(sp_session *session)
 {
+	g_trackMaxVolume = 0;
 	g_trackEnded = true;
 }
 
@@ -635,12 +646,15 @@ int downloadTracks( TTrackList& _trackQueue )
 
 				const ptypes::datetime speedPercent = trackDuration * 100 / realDuration;
 
-				LOG( "Download completed, speed was " << speedPercent << "%, finalizing..." );
+				double volPercent = 100.0 * g_trackMaxVolume / INT16_MAX;
+
+				LOG( "Download completed, speed was " << speedPercent << "%, maxx. vol: " << volPercent << "% finalizing..." );
 
 				track.writtenFilename = m_writer->getFilename();
 				m_writer->stopWorker();
 				delete m_writer;
 				m_writer = 0;
+				g_trackMaxVolume = 0;
 
 				t = 0;
 				track.release();
@@ -1015,13 +1029,15 @@ int main(int argc, char* argv[])
 
 	CHECK_SP_ERR( sp_session_create( &g_spotify_session_config, &g_session ) );
 
-	CHECK_SP_ERR( sp_session_set_volume_normalization( g_session, FALSE ) );
+	CHECK_SP_ERR( sp_session_set_volume_normalization( g_session, g_options.volumeNormalization ) );
 
 	CHECK_SP_ERR( sp_session_preferred_bitrate( g_session, SP_BITRATE_320k ) );
 
 	CHECK_SP_ERR( sp_session_login( g_session, g_options.spotifyUsername.c_str(), g_options.spotifyPassword.c_str(), false, NULL ) );
 
 	WAIT_FOR_LOAD( m_loggedIn );
+
+	if (g_options.volumeNormalization) LOG("Using volume normalization");
 
 	LOG( "Parsing spotify links" );
 
