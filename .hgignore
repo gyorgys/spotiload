@@ -1,0 +1,26 @@
+syntax: glob
+*.user
+*.ipch
+*.suo
+*.sdf
+*.opensdf
+*.cache
+temp/*
+bin/download.bat
+bin/download_interactive.bat
+*.ogg
+*.pdb
+*.ncb
+src/external/lame/obj/Debug
+src/external/lame/obj/Release
+*.mp3
+*.jpg
+bin/spotify_appkey.key
+bin/desktop.ini
+*.mp3___wip___
+bin/spotiloadDebug.exe
+bin/spotiloadDebug.ilk
+bin/spotiload/settings
+bin/spotiload/cache
+*.m3u
+*.ini

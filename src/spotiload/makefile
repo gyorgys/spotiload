@@ -1,0 +1,2 @@
+spotiload: audioWriter.cpp image.cpp MP3Writer.cpp OGGWriter.cpp options.cpp RawWriter.cpp spotiload.cpp stdafx.cpp WAVWriter.cpp utf8.c
+	g++ -o ../../bin/spotiload audioWriter.cpp image.cpp MP3Writer.cpp OGGWriter.cpp options.cpp RawWriter.cpp spotiload.cpp stdafx.cpp WAVWriter.cpp utf8.c ../external/ptypes/so/libptypes.so ../external/lame/libmp3lame/.libs/libmp3lame.so ../external/lame/libmp3lame/.libs/libmp3lame.so ../external/libspotify/lib/libspotify.so

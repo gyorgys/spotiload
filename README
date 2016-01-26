@@ -1,0 +1,46 @@
+Spotiload uses the official Spotify API to create mp3 tracks of 
+spotify links, playlists, albums or the whole content of an account.
+
+Features:
+
+* Creates 320kbit mp3s of any spotify link
+* Writes album, artist and title information as ID3 tags
+* Embeds covert art into every mp3
+* Creates folders for albums/playlists and creates folder.jpg images
+* Creates m3u play list files for spotify playlists / albums
+
+Usage:
+
+spotiload -u <user> -p <password> -link <link> -key <appkey> -cachedir <cachedir>
+
+* <user> is your spotify user name
+* <password> is your spotify password
+* <link> can be any spotify URI in form spotify:.... or 'all' to download the 
+  whole content of an account
+* <appkey> is the developer key that you got from Spotify when registering
+  as developer
+* <cachedir> is the path to your local file system where spotiload can create 
+  temporary files
+
+Examples:
+
+* spotiload -u myname -p mypwd -link all -key mykey.key
+  This will download the whole library of user myname
+* spotiload -u myname -p mypwd -link starred -key mykey.key
+  This will download all favourites of user myname
+* spotiload -u myname -p mypwd \
+    -link spotify:album:06SY6Ke6mXzZHhURLVU57R -key mykey.key
+  This will download the album "Teenage Dream" from "Katy Perry"
+
+Quality: Spotify uses ogg internally but with the official libspotify, you
+cannot access this data so spotiload needs to re-encode the delivered audio
+data. Everything is done inside of the program, there is no soundcard used and
+no additional quality loss than re-encoding ogg to mp3. Spotiload uses the 
+LAME codec at highest quality setting and uses 320kbit as bitrate to 
+preserve maximum audio quality.
+
+History:
+
+Initially, a modified despotify library was used to write ogg files without
+any quality loss at all. Unfortunately, despotify no longer works and 
+spotiload died. I then rewrote it to use the official libspotify,

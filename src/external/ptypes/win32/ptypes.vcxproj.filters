@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{a2ef8894-9966-4445-a4b0-42727be5e2d4}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat;h</Extensions>
+    </Filter>
+    <Filter Include="Include">
+      <UniqueIdentifier>{9eb371dc-1ef1-4bba-8dcd-f5719a2c8ee5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Makefile">
+      <UniqueIdentifier>{ac088dc9-27d1-45cb-b152-03de8fbc4fb5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\pasync.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\patomic.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pcomponent.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pcset.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pcsetdbg.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pexcept.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pfatal.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pfdxstm.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pinfile.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pinfilter.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pinmem.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pinstm.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pintee.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\piobase.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pipbase.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pipmsg.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pipmsgsv.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pipstm.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pipstmsv.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pipsvbase.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pmd5.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pmem.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pmsgq.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pmtxtable.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pnpipe.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pnpserver.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pobjlist.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\poutfile.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\poutfilter.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\poutmem.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\poutstm.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ppipe.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ppodlist.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pputf.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\prwlock.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\psemaphore.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pstdio.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pstrcase.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pstrconv.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pstring.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pstrlist.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pstrmanip.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pstrtoi.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pstrutils.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ptextmap.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pthread.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ptime.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ptimedsem.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ptrigger.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\punit.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\punknown.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pvariant.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pversion.cxx">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\pasync.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pinet.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pport.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\pstreams.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ptime.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\ptypes.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Makefile">
+      <Filter>Makefile</Filter>
+    </None>
+    <None Include="..\src\Makefile.BSD_OS">
+      <Filter>Makefile</Filter>
+    </None>
+    <None Include="..\src\Makefile.common">
+      <Filter>Makefile</Filter>
+    </None>
+    <None Include="..\src\Makefile.CYGWIN_NT">
+      <Filter>Makefile</Filter>
+    </None>
+    <None Include="..\src\Makefile.Darwin">
+      <Filter>Makefile</Filter>
+    </None>
+    <None Include="..\src\Makefile.FreeBSD">
+      <Filter>Makefile</Filter>
+    </None>
+    <None Include="..\src\Makefile.Linux">
+      <Filter>Makefile</Filter>
+    </None>
+    <None Include="..\src\Makefile.SunOS">
+      <Filter>Makefile</Filter>
+    </None>
+  </ItemGroup>
+</Project>
