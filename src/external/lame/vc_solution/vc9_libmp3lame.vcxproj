@@ -74,6 +74,22 @@
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseNASM|Win32'">
+    <OutDir>$(SolutionDir)\output\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\obj\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseSSE2|Win32'">
+    <OutDir>$(SolutionDir)\output\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\obj\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)\output\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\obj\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)\output\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\obj\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseNASM|Win32'">
     <ClCompile>
       <Optimization>Full</Optimization>

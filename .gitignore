@@ -51,7 +51,10 @@ Temporary Items
 *.opendb
 *.cache
 /temp/*
+!/bin/libspotify.dll
 /bin/*
+/obj/*
+/output/*
 *.ogg
 *.pdb
 *.ncb
@@ -62,3 +65,4 @@ src/external/lame/obj/Release
 *.mp3___wip___
 *.m3u
 *.ini
+
