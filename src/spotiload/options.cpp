@@ -32,7 +32,8 @@ static const OptionDesc g_optionDescs[Options::eCOUNT] =
 	/* eOverwriteExistingTracks, */	OptionDesc( "f", 0 ),
 	/* eDownloadLinks, */			OptionDesc( "link", 1 ),
 	/* eAppKey,			*/			OptionDesc( "key", 1 ),
-	/* eCacheDir,	*/				OptionDesc( "cachedir", 1 )
+	/* eCacheDir,	*/				OptionDesc( "cachedir", 1 ),
+	/* eVolumeNormalization, */		OptionDesc("vn", 0),
 };
 
 // _____________________________________________________________________________
@@ -43,6 +44,7 @@ Options::Options() : useCache(false)
 	, spotifyPassword(std::string())
 	, overwriteExistingTracks(false)
 	, downloadLinks(std::vector<std::string>())
+	, volumeNormalization(false)
 {
 }
 
@@ -120,6 +122,8 @@ std::string Options::parse( std::vector<std::string>& _args )
 		return "Please provide the file name of your Spotify application key";
 
 	cacheDir				= optionArgs[eCacheDir].empty() ? std::string("spotiload") : optionArgs[eCacheDir].front();
+
+	volumeNormalization = !optionArgs[eVolumeNormalization].empty();
 
 	return std::string();
 }

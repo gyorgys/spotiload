@@ -1,5 +1,5 @@
 #include "stdafx.h"
-
+#include "options.h"
 #include "MP3Writer.h"
 #include "image.h"
 #include "utf8.h"
@@ -23,7 +23,7 @@ MP3Writer::MP3Writer( const STrackData& _trackData, const Options& _options ) : 
 	id3tag_set_artist(gfp, tolocalestring(_trackData.artist).c_str());
 	id3tag_set_album(gfp, tolocalestring(_trackData.album).c_str());
 	id3tag_set_year(gfp, toString(_trackData.albumYear).c_str());
-	id3tag_set_comment(gfp, "SL");        
+	id3tag_set_comment(gfp, _options.volumeNormalization ? "SP VolumeNorm" : "SP");        
 	id3tag_set_track(gfp, toString(_trackData.trackNum+1).c_str());
 //	id3tag_set_comment(gfp, _trackData.spotifyURI.c_str());        
 
