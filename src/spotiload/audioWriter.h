@@ -60,7 +60,7 @@ public:
 	virtual ~AudioWriter();
 
 	std::string getFilename() const;
-	static std::string getFilename( const Options& _options, const STrackData& _trackData, const std::string& _ext );
+	static std::string getFilename( const Options& _options, const STrackData& _trackData, const std::string& _ext);
 	
 	virtual unsigned int append( short* _data, size_t _count ) = 0;
 
@@ -73,12 +73,12 @@ public:
 	static std::string escapeFilename( const std::string& _src );
 	static std::string tolocalestring( const std::string& _src );
 
-	static FILE* myfopen( const std::string& _filename, const char* _mode );
+	static std::wstring getUnicodeFilename(const std::string & _filename, const std::string & _dir);
+
+	static FILE * myfopen(const std::string & _filename, const char * _mode, const std::string & _dir = std::string());
 
 	bool createFile();
 	void closeFile();
-
-	static std::wstring getUnicodeFilename( const std::string& _filename );
 
 	bool isFileOpened() const			{ return m_hFile != 0; }
 

@@ -585,7 +585,7 @@ int downloadTracks( TTrackList& _trackQueue )
 				if( !g_options.overwriteExistingTracks )
 				{
 					const std::string fn = AudioWriter::getFilename( g_options, g_currentTrackData, "mp3" );
-					FILE* hFile = AudioWriter::myfopen( fn, "rb" );
+					FILE* hFile = AudioWriter::myfopen( fn, "rb", g_options.musicDir );
 					if( hFile != NULL )
 					{
 //						LOG( "File " << fn << " already exists, skipping download" );

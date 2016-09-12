@@ -26,7 +26,7 @@ void AudioWriter::writeImages()
 
 			const std::string filename = ss.str();
 
-			FILE* hFile = myfopen( filename, "wb" );
+			FILE* hFile = myfopen( filename, "wb", m_options.musicDir );
 			
 			if( hFile )
 			{
@@ -56,30 +56,30 @@ std::string AudioWriter::getFilename() const
 	return getFilename(m_options,m_trackData, getExtension());
 }
 
-std::string AudioWriter::getFilename( const Options& _options, const STrackData& _trackData, const std::string& _ext )
+std::string AudioWriter::getFilename( const Options& _options, const STrackData& _trackData, const std::string& _ext)
 {
 	std::string path;
+	std::string dir;
 
-	if(_options.musicDir.length() > 0)
+	if (!_options.musicDir.empty())
 	{
-		path += _options.musicDir;
-		path += SEPARATOR;
+		dir = _options.musicDir + SEPARATOR;
 	}
 
 	if( _trackData.srcIsPlaylist )
 	{
 		path += escapeFilename(_trackData.playlist);
-		createDirectory( path );
+		createDirectory(dir + path );
 		path += SEPARATOR;
 	}
 	else if( _trackData.srcIsAlbum )
 	{
 		path += escapeFilename(_trackData.albumArtist);
-		createDirectory( path );
+		createDirectory(dir + path );
 		path += SEPARATOR;
 
 		path += escapeFilename(_trackData.album);
-		createDirectory( path );
+		createDirectory(dir + path );
 		path += SEPARATOR;
 	}
 
@@ -162,7 +162,7 @@ bool AudioWriter::createFile()
 		return false;
 
 	const std::string name = getFilename()+g_fileWorkInProgressPostfix;
-	m_hFile = myfopen( name, "w+b" );
+	m_hFile = myfopen( name, "w+b", m_options.musicDir );
 
 	if( NULL == m_hFile )
 		LOGD( "ERROR: Failed to create file '" << name << "', errno " << errno );
@@ -179,8 +179,8 @@ void AudioWriter::closeFile()
 	m_hFile = 0;
 
 #ifdef _WIN32
-	const std::wstring src = getUnicodeFilename( getFilename()+g_fileWorkInProgressPostfix );
-	const std::wstring dst = getUnicodeFilename( getFilename() );
+	const std::wstring src = getUnicodeFilename( getFilename()+g_fileWorkInProgressPostfix, m_options.musicDir);
+	const std::wstring dst = getUnicodeFilename( getFilename(), m_options.musicDir);
 
 	if( m_error.empty() )
 	{
@@ -221,11 +221,20 @@ unsigned int AudioWriter::appendData( short* _data, size_t _count )
 static wchar_t temp[32768];
 static char tempDir[32768];
 
-std::wstring AudioWriter::getUnicodeFilename( const std::string& _filename )
+std::wstring AudioWriter::getUnicodeFilename( const std::string& _filename, const std::string& _dir = std::string() )
 {
-	_getcwd( tempDir, sizeof(tempDir) );
+	std::string from;
 
-	const std::string from = std::string("\\\\?\\") + tempDir + '\\' + _filename;
+	if (_dir.empty())
+	{
+		_getcwd(tempDir, sizeof(tempDir));
+
+		from = std::string("\\\\?\\") + tempDir + '\\' + _filename;
+	}
+	else
+	{
+		from = _dir + '\\' + _filename;
+	}
 
 	memset( temp, 0, sizeof(temp) );
 
@@ -237,11 +246,11 @@ std::wstring AudioWriter::getUnicodeFilename( const std::string& _filename )
 	return std::wstring( temp );
 }
 
-FILE* AudioWriter::myfopen( const std::string& _filename, const char* _mode )
+FILE* AudioWriter::myfopen( const std::string& _filename, const char* _mode, const std::string& _dir )
 {
 #ifdef _WIN32
 	// prevent MAX_PATH limitation
-	std::wstring name( getUnicodeFilename(_filename) );
+	std::wstring name( getUnicodeFilename(_filename, _dir ) );
 
 	// mode needs to be unicode, too
 	memset( temp, 0, sizeof(temp) );
