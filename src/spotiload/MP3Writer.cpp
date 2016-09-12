@@ -12,7 +12,7 @@ MP3Writer::MP3Writer( const STrackData& _trackData, const Options& _options ) : 
 	gfp = lame_init();
 	lame_set_num_channels(gfp,2);
 	lame_set_in_samplerate(gfp,44100);
-	lame_set_brate(gfp,320);
+	lame_set_brate(gfp, _options.bitrate == -1 ? 320 : _options.bitrate);
 	lame_set_mode(gfp,STEREO);
 	lame_set_quality(gfp,0);
 

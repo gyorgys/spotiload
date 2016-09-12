@@ -60,6 +60,12 @@ std::string AudioWriter::getFilename( const Options& _options, const STrackData&
 {
 	std::string path;
 
+	if(_options.musicDir.length() > 0)
+	{
+		path += _options.musicDir;
+		path += SEPARATOR;
+	}
+
 	if( _trackData.srcIsPlaylist )
 	{
 		path += escapeFilename(_trackData.playlist);
@@ -88,8 +94,16 @@ std::string AudioWriter::getFilename( const Options& _options, const STrackData&
 
 	// res += escapeFilename(_trackData.artist + " - " + _trackData.title);
 	res += escapeFilename(_trackData.title);
+	if (_options.bitrate == -1)
+	{
+		res += ".o";
+	}
+	else
+	{
+		res += ".b" + std::to_string(_options.bitrate);
+	}
 
-	res += ".o." + _ext;
+	res += "." + _ext;
 
 	return res;
 }

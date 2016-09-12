@@ -17,6 +17,8 @@ public:
 		eAppKey,
 		eCacheDir,
 		eVolumeNormalization,
+		eMusicDir,
+		eBitrate,
 		eCOUNT
 	};
 
@@ -31,8 +33,11 @@ public:
 
 	std::string					appkeyFilename;
 	std::string					cacheDir;
+	std::string					musicDir;
 
 	bool						volumeNormalization;
+
+	long					    bitrate;
 
 	Options();
 
