@@ -55,6 +55,7 @@ Temporary Items
 /bin/*
 /obj/*
 /output/*
+src/spotiload/*
 *.ogg
 *.pdb
 *.ncb
