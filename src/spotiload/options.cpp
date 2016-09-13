@@ -34,6 +34,8 @@ static const OptionDesc g_optionDescs[Options::eCOUNT] =
 	/* eAppKey,			*/			OptionDesc( "key", 1 ),
 	/* eCacheDir,	*/				OptionDesc( "cachedir", 1 ),
 	/* eVolumeNormalization, */		OptionDesc("vn", 0),
+	/* eMusicDir,	*/				OptionDesc("dir", 1),
+	/* eBitrate,	*/				OptionDesc("b", 1),
 };
 
 // _____________________________________________________________________________
@@ -122,8 +124,20 @@ std::string Options::parse( std::vector<std::string>& _args )
 		return "Please provide the file name of your Spotify application key";
 
 	cacheDir				= optionArgs[eCacheDir].empty() ? std::string("spotiload") : optionArgs[eCacheDir].front();
+	musicDir				= optionArgs[eMusicDir].empty() ? std::string("") : optionArgs[eMusicDir].front();
 
 	volumeNormalization = !optionArgs[eVolumeNormalization].empty();
+
+	bitrate = -1;
+	if (!optionArgs[eBitrate].empty())
+	{
+		try {
+			bitrate = std::stoi(optionArgs[eBitrate].front());
+		}
+		catch (const std::runtime_error& e) {
+			return e.what();
+		}
+	}
 
 	return std::string();
 }
@@ -154,6 +168,9 @@ const std::string& Options::printUsage()
 		"                     If the link is 'all', the whole content of the account is downloaded\n"
 		"                     If no link is supplied, links can be entered from the command line\n"
 		"[-cachedir dir]      Directory for cache.\n"
+		"[-vn]                Normalize volume accross tracks.\n"
+		"[-b bitrate]         Override bitrate.\n"
+		"[-dir dir]           Directory to save music to.\n"
 	;
 
 	static std::string ret(usage);

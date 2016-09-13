@@ -184,7 +184,6 @@ void onSpotifyLogMessage(sp_session *session, const char* _msg)
 
 void onSpotifyEndOfTrack(sp_session *session)
 {
-	g_trackMaxVolume = 0;
 	g_trackEnded = true;
 }
 
@@ -586,7 +585,7 @@ int downloadTracks( TTrackList& _trackQueue )
 				if( !g_options.overwriteExistingTracks )
 				{
 					const std::string fn = AudioWriter::getFilename( g_options, g_currentTrackData, "mp3" );
-					FILE* hFile = AudioWriter::myfopen( fn, "rb" );
+					FILE* hFile = AudioWriter::myfopen( fn, "rb", g_options.musicDir );
 					if( hFile != NULL )
 					{
 //						LOG( "File " << fn << " already exists, skipping download" );
@@ -604,6 +603,11 @@ int downloadTracks( TTrackList& _trackQueue )
 					);
 
 				m_writer = new MP3Writer(g_currentTrackData, g_options);
+
+				if (!g_options.bitrate == -1)
+				{
+					LOG ( "Output bitrate:" << g_options.bitrate << " kbps");
+				}
 
 				if( !m_writer->isFileOpened() )
 				{
