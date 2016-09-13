@@ -70,4 +70,5 @@ src/external/lame/obj/Release
 *.mp3___wip___
 *.m3u
 *.ini
+*.key
 
