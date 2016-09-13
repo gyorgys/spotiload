@@ -17,6 +17,10 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# VS Files
+.suo
+*.vc.db
+
 # =========================
 # Operating System Files
 # =========================
@@ -55,6 +59,7 @@ Temporary Items
 /bin/*
 /obj/*
 /output/*
+src/spotiload/spotiload/*
 *.ogg
 *.pdb
 *.ncb
@@ -65,4 +70,5 @@ src/external/lame/obj/Release
 *.mp3___wip___
 *.m3u
 *.ini
+*.key
 
