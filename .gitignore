@@ -18,7 +18,7 @@ $RECYCLE.BIN/
 *.lnk
 
 # VS Files
-*.suo
+.suo
 *.vc.db
 
 # =========================
